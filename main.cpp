@@ -78,7 +78,7 @@ int main()
 
     M_4D[8] = M[6];
     M_4D[9] = M[7];
-    M_4D[10] = -50.0;
+    M_4D[10] = -5.0;
     M_4D[11] = 0.0;
 
     M_4D[12] = 0.0;
@@ -94,9 +94,10 @@ int main()
     L_vector_4d[0] = L_4D[0]/L_4D[3];
     L_vector_4d[1] = L_4D[1]/L_4D[3];
     L_vector_4d[2] = L_4D[2]/L_4D[3];
+    L_vector_4d[3] = L_4D[3]/L_4D[3];
 
     printf("L_vector_4d:\n");
-    for(int i = 0; i < 3; i++)  printf("%lf ", L_vector_4d[i]);
+    for(int i = 0; i < 4; i++)  printf("%lf ", L_vector_4d[i]);
     printf("\n");
 
     cout << "Hello World!" << endl;
