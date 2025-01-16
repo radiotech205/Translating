@@ -11,18 +11,7 @@ int main()
     double focus = 0.025;
     double pixel = 9 * 1e-6;
 
-    double inst_params[9];
-    inst_params[0] = cx;
-    inst_params[1] = 0.0;
-    inst_params[2] = focus/pixel;
-
-    inst_params[3] = 0.0;
-    inst_params[4] = cy;
-    inst_params[5] = focus/pixel;
-
-    inst_params[6] = 0.0;
-    inst_params[7] = 0.0;
-    inst_params[8] = 1.0;
+    double shift = -50.0;
 
     double x_r = 650.0;
     double y_r = 650.0;
@@ -32,8 +21,8 @@ int main()
     R[2] = 1.0;
 
     double M[9];
-    M[0] = 1.0; M[1] = 0.0; M[2] = -50.0;
-    M[3] = 0.0; M[4] = 1.0; M[5] = -50.0;
+    M[0] = 1.0; M[1] = 0.0; M[2] = shift;
+    M[3] = 0.0; M[4] = 1.0; M[5] = shift;
     M[6] = 0.0; M[7] = 0.0; M[8] = 1.0;
 
 
@@ -60,26 +49,26 @@ int main()
     /*********************************************************/
     printf("/*********************************************************/\n");
     double  R_4d[4];
-    R_4d[0] = R[0];
-    R_4d[1] = R[1];
-    R_4d[2] = R[2];
-    R_4d[3] = 1.0;
+    R_4d[0] = R[0]*focus/pixel;
+    R_4d[1] = R[1]*focus/pixel;
+    R_4d[2] = R[2]*focus/pixel;
+    R_4d[3] = focus/pixel;
 
     double M_4D[16];
     M_4D[0] = 1.0;
     M_4D[1] = 0.0;
     M_4D[2] = 0.0;
-    M_4D[3] = -50.0;
+    M_4D[3] = shift;
 
     M_4D[4] = 0.0;
     M_4D[5] = 1.0;
     M_4D[6] = 0.0;
-    M_4D[7] = -50.0;
+    M_4D[7] = shift;
 
     M_4D[8] = 0.0;
     M_4D[9] = 0.0;
     M_4D[10] = 1.0;
-    M_4D[11] = -50.0;
+    M_4D[11] = shift;
 
     M_4D[12] = 0.0;
     M_4D[13] = 0.0;
