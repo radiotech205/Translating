@@ -36,13 +36,9 @@ int main()
     M[3] = 0.0; M[4] = 1.0; M[5] = -50.0;
     M[6] = 0.0; M[7] = 0.0; M[8] = 1.0;
 
-//    double R_3d[3];
-//    //MatrixMultiplication(inst_params, 3, 3, R, 1, R_3d);
-//    MatrixMultVector(inst_params, 3, R, R_3d);
 
-//    printf("R_3d:\n");
-//    for(int i = 0; i < 3; i++)  printf("%lf ", R_3d[i]);
-//    printf("\n");
+
+
 
     double L[9];
     //MatrixMultiplication(M, 3, 3, R, 1, L);
@@ -59,6 +55,48 @@ int main()
 
     printf("L_vector:\n");
     for(int i = 0; i < 3; i++)  printf("%lf ", L_vector[i]);
+    printf("\n");
+
+    /*********************************************************/
+    printf("/*********************************************************/\n");
+    double  R_4d[4];
+    R_4d[0] = R[0];
+    R_4d[1] = R[1];
+    R_4d[2] = R[2];
+    R_4d[3] = 1.0;
+
+    double M_4D[16];
+    M_4D[0] = M[0];
+    M_4D[1] = M[1];
+    M_4D[2] = M[2];
+    M_4D[3] = 0.0;
+
+    M_4D[4] = M[3];
+    M_4D[5] = M[4];
+    M_4D[6] = M[5];
+    M_4D[7] = 0.0;
+
+    M_4D[8] = M[6];
+    M_4D[9] = M[7];
+    M_4D[10] = -50.0;
+    M_4D[11] = 0.0;
+
+    M_4D[12] = 0.0;
+    M_4D[13] = 0.0;
+    M_4D[14] = 0.0;
+    M_4D[15] = 1.0;
+
+    double L_4D[4];
+
+    MatrixMultVector(M_4D, 4, R_4d, L_4D);
+
+    double L_vector_4d[4];
+    L_vector_4d[0] = L_4D[0]/L_4D[3];
+    L_vector_4d[1] = L_4D[1]/L_4D[3];
+    L_vector_4d[2] = L_4D[2]/L_4D[3];
+
+    printf("L_vector_4d:\n");
+    for(int i = 0; i < 3; i++)  printf("%lf ", L_vector_4d[i]);
     printf("\n");
 
     cout << "Hello World!" << endl;
